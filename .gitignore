@@ -1,0 +1,6 @@
+.idea
+dist
+faviconData.json
+node_modules
+src/css
+src/vendor
