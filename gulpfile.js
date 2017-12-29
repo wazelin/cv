@@ -1,11 +1,15 @@
 const gulp = require('gulp'),
     sass = require('gulp-sass'),
+    watchSass = require('gulp-watch-sass'),
+    plumber = require('gulp-plumber'),
     browserSync = require('browser-sync'),
     useref = require('gulp-useref'),
     uglify = require('gulp-uglify'),
     gulpIf = require('gulp-if'),
     cssnano = require('gulp-cssnano'),
+    imagemin = require('gulp-imagemin'),
     runSequence = require('run-sequence'),
+    cache = require('gulp-cache'),
     realFavicon = require('gulp-real-favicon'),
     fs = require('fs');
 
@@ -27,8 +31,7 @@ gulp.task(
     function () {
         return gulp.src(['./node_modules/bootstrap/scss/bootstrap.scss', './src/scss/**/*.scss'])
             .pipe(sass().on('error', sass.logError))
-            .pipe(gulp.dest('./src/css'))
-            .pipe(browserSync.reload({stream: true}));
+            .pipe(gulp.dest('./src/css'));
     }
 );
 
@@ -44,6 +47,15 @@ gulp.task(
             )
             .pipe(gulp.dest('./src/vendor'))
             .pipe(browserSync.stream());
+    }
+);
+
+gulp.task(
+    'images',
+    function () {
+        return gulp.src('src/images/**/*.+(png|jpg|gif|svg)')
+            .pipe(cache(imagemin()))
+            .pipe(gulp.dest('dist/images'));
     }
 );
 
@@ -134,8 +146,12 @@ gulp.task(
 gulp.task(
     'watch',
     function () {
-        gulp.watch('./src/scss/**/*.scss', ['sass']);
-        gulp.watch('./src/*.html', browserSync.reload);
+        watchSass('./src/scss/**/*.scss')
+            .pipe(plumber())
+            .pipe(sass())
+            .pipe(gulp.dest('./src/css'))
+            .pipe(browserSync.reload({stream: true}));
+        gulp.watch(['./src/*.html', './src/images/**/*.+(png|jpg|gif|svg)'], browserSync.reload);
     }
 );
 
@@ -170,7 +186,8 @@ gulp.task(
         runSequence(
             [
                 'generate-favicon',
-                'publish'
+                'publish',
+                'images'
             ],
             'inject-favicon-markups',
             done

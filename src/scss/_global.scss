@@ -1,0 +1,15 @@
+@import "variables";
+
+body {
+  font-family: $mainFontFamily;
+  font-weight: $baseFontWeight;
+  font-size: $baseFontSize;
+  color: $mainFontColor;
+  background: $background;
+}
+
+.container {
+  margin-top: $marginTop;
+  margin-bottom: $marginBottom;
+  background: $pageBackground;
+}
