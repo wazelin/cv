@@ -29,14 +29,15 @@ gulp.task(
 gulp.task(
     'sass',
     function () {
-        return gulp.src(['./node_modules/bootstrap/scss/bootstrap.scss', './src/scss/**/*.scss'])
+        return gulp.src('./src/scss/**/*.scss')
             .pipe(sass().on('error', sass.logError))
             .pipe(gulp.dest('./src/css'));
     }
 );
 
 gulp.task(
-    'vendor', function () {
+    'vendor',
+    function () {
         return gulp
             .src(
                 [
@@ -47,6 +48,14 @@ gulp.task(
             )
             .pipe(gulp.dest('./src/vendor'))
             .pipe(browserSync.stream());
+    }
+);
+
+gulp.task(
+    'vendor:public',
+    function () {
+        return gulp.src('./node_modules/font-awesome/fonts/*')
+            .pipe(gulp.dest('./src/vendor/public'));
     }
 );
 
@@ -167,16 +176,24 @@ gulp.task(
     }
 );
 
-gulp.task('build', ['vendor', 'sass']);
+gulp.task('build', ['vendor', 'vendor:public', 'sass']);
 
 gulp.task(
     'publish',
     function (done) {
         runSequence(
             'build',
-            'useref',
+            ['useref', 'publish:vendor'],
             done
         );
+    }
+);
+
+gulp.task(
+    'publish:vendor',
+    function () {
+        return gulp.src('./src/vendor/public/**/*')
+            .pipe(gulp.dest('./dist/vendor/public'));
     }
 );
 

@@ -1,0 +1,43 @@
+@import "variables";
+
+$iconBorder: 1px solid #aaa;
+$descriptionWidth: calc(100% - 55px);
+
+.contact-item {
+  width: 100%;
+  float: left;
+
+  .fa {
+    font-size: 2em;
+  }
+
+  .title {
+    width: $descriptionWidth;
+    font-size: 1.5em;
+    font-weight: $bolderFontWeight;
+    opacity: 0.9;
+
+    &.only {
+      margin-top: 10px;
+    }
+  }
+
+  .description {
+    width: $descriptionWidth;
+    font-size: 1.2em;
+    opacity: 0.7;
+  }
+
+  .icon {
+    padding: 10px;
+    border-right: $iconBorder;
+    border-bottom: $iconBorder;
+    opacity: 0.3;
+  }
+
+  &:last-child {
+    .icon {
+      border-bottom: none;
+    }
+  }
+}

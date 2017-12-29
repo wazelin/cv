@@ -4,7 +4,7 @@ $headerFontSize: $baseFontSize + 1.4em;
 $firstLineHeaderFontSize: $baseFontSize + 0.5em;
 
 #header {
-  margin-top: -$marginTop;
+  margin-top: 5px - $marginTop;
 }
 
 #avatar {

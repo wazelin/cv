@@ -12,6 +12,13 @@ body {
   background: $background;
 }
 
+a {
+  color: $highlightColor;
+  &:hover {
+    color: darken($highlightColor, 15%);
+  }
+}
+
 .container {
   margin-top: $marginTop;
   margin-bottom: $marginBottom;

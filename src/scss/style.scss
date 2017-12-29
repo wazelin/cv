@@ -1,6 +1,12 @@
+$fa-font-path: "../vendor/public";
+
+@import "../../node_modules/font-awesome/scss/font-awesome";
+@import "../../node_modules/bootstrap/scss/bootstrap";
+
 @import "fonts";
 @import "global";
 @import "header";
 @import "panel";
 @import "position";
 @import "timeline";
+@import "contact";
