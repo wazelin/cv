@@ -2,7 +2,6 @@
 
 $headerFontSize: $baseFontSize + 1.4em;
 $firstLineHeaderFontSize: $baseFontSize + 0.5em;
-$firstLineHeaderFontWeight: $baseFontWeight + 400;
 
 #header {
   margin-top: -$marginTop;
@@ -30,17 +29,17 @@ $firstLineHeaderFontWeight: $baseFontWeight + 400;
     padding: 0;
     font-size: $headerFontSize;
     font-weight: $bolderFontWeight;
-    text-transform: uppercase;
     letter-spacing: -1px;
 
-    &::first-line {
+    &:first-line {
       font-size: $firstLineHeaderFontSize;
-      font-weight: $firstLineHeaderFontWeight;
-      letter-spacing: -4px;
+      font-weight: $baseFontWeight;
       line-height: $firstLineHeaderFontSize;
+      text-transform: initial;
     }
 
     span {
+      text-transform: uppercase;
       color: $highlightColor;
     }
   }
