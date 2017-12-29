@@ -6,6 +6,10 @@ var resizeCallback = function () {
             $(this).animate({width: newWidth}, 1000);
         }
     );
+    $('.icons-red').each(
+        function () {
+            $(this).animate({height: 14}, 2000);
+        });
 };
 $(document).ready(resizeCallback);
 

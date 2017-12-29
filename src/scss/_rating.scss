@@ -1,0 +1,16 @@
+.rating {
+  font-size: 1.3em;
+  margin: 10px 0;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eee;
+
+  .icons {
+    width: 111px;
+    height: 14px;
+    background: url(../images/star-grey.png) no-repeat;
+  }
+
+  .icons-red{
+    background: url(../images/star-red.png) no-repeat;
+  }
+}

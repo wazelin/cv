@@ -38,7 +38,7 @@ $descriptionBorderColor: #ddd;
   }
 
   .description {
-    width: 80%;
+    width: 70%;
     display: inline-block;
     background: $descriptionBackground;
     margin-bottom: 10px;
@@ -47,15 +47,15 @@ $descriptionBorderColor: #ddd;
     border-bottom: 1px solid $descriptionBorderColor;
 
     @media (min-width: 500px) {
-      width: 85%;
+      width: 80%;
     }
 
     @media (min-width: 992px) {
-      width: 87%;
+      width: 85%;
     }
 
     @media (min-width: 1200px) {
-      width: 90%;
+      width: 87%;
     }
 
     &:after {
