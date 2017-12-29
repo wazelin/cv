@@ -1,6 +1,7 @@
 const gulp = require('gulp'),
     sass = require('gulp-sass'),
     watchSass = require('gulp-watch-sass'),
+    autoprefixer = require('gulp-autoprefixer'),
     plumber = require('gulp-plumber'),
     browserSync = require('browser-sync'),
     useref = require('gulp-useref'),
@@ -31,6 +32,7 @@ gulp.task(
     function () {
         return gulp.src('./src/scss/**/*.scss')
             .pipe(sass().on('error', sass.logError))
+            .pipe(autoprefixer({browsers: ['last 2 versions'], cascade: false}))
             .pipe(gulp.dest('./src/css'));
     }
 );
