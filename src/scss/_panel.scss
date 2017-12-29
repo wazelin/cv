@@ -1,0 +1,21 @@
+@import "variables";
+
+.box {
+  margin-bottom: 15px;
+  h2 {
+    color: $focusColor;
+    font-size: 1.8em;
+    font-weight: $bolderFontWeight;
+    text-transform: uppercase;
+
+    &:before {
+      content: '//';
+      margin-right: 5px;
+    }
+  }
+
+  p {
+    font-size: 1.3em;
+    line-height: 1.5em;
+  }
+}
