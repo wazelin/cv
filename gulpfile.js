@@ -5,6 +5,7 @@ const gulp = require('gulp'),
     plumber = require('gulp-plumber'),
     browserSync = require('browser-sync'),
     useref = require('gulp-useref'),
+    refHash = require('gulp-ref-hash'),
     uglify = require('gulp-uglify'),
     gulpIf = require('gulp-if'),
     cssnano = require('gulp-cssnano'),
@@ -74,6 +75,16 @@ gulp.task(
     'useref',
     function () {
         return gulp.src('./src/*.html')
+            .pipe(
+                refHash(
+                    {
+                        paths: {
+                            js: './js/',
+                            css: './css/'
+                        }
+                    }
+                )
+            )
             .pipe(useref())
             .pipe(gulpIf('*.js', uglify()))
             .pipe(gulpIf('*.css', cssnano()))

@@ -2455,6 +2455,14 @@ gulp-real-favicon@^0.2.2:
     rfg-api "^0.3.0"
     through2 "^2.0.0"
 
+gulp-ref-hash@^0.0.2:
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/gulp-ref-hash/-/gulp-ref-hash-0.0.2.tgz#7099efea0847532d36124de25f0280990b5c4744"
+  dependencies:
+    gulp-util "^2.2.17"
+    through2 "^0.5.1"
+    underscore "^1.6.0"
+
 gulp-rename@^1.2.0:
   version "1.2.2"
   resolved "https://registry.yarnpkg.com/gulp-rename/-/gulp-rename-1.2.2.tgz#3ad4428763f05e2764dec1c67d868db275687817"
@@ -2521,7 +2529,7 @@ gulp-useref@^3.1.3:
     useref "^1.2.0"
     vinyl-fs "^2.2.1"
 
-gulp-util@^2.2.14:
+gulp-util@^2.2.14, gulp-util@^2.2.17:
   version "2.2.20"
   resolved "https://registry.yarnpkg.com/gulp-util/-/gulp-util-2.2.20.tgz#d7146e5728910bd8f047a6b0b1e549bc22dbd64c"
   dependencies:
@@ -6080,7 +6088,7 @@ through2@^0.4.2:
     readable-stream "~1.0.17"
     xtend "~2.1.1"
 
-through2@^0.5.0:
+through2@^0.5.0, through2@^0.5.1:
   version "0.5.1"
   resolved "https://registry.yarnpkg.com/through2/-/through2-0.5.1.tgz#dfdd012eb9c700e2323fd334f38ac622ab372da7"
   dependencies:
@@ -6330,7 +6338,7 @@ unc-path-regex@^0.1.2:
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/unc-path-regex/-/unc-path-regex-0.1.2.tgz#e73dd3d7b0d7c5ed86fbac6b0ae7d8c6a69d50fa"
 
-underscore@*, underscore@^1.8.3:
+underscore@*, underscore@^1.6.0, underscore@^1.8.3:
   version "1.8.3"
   resolved "https://registry.yarnpkg.com/underscore/-/underscore-1.8.3.tgz#4f3fb53b106e6097fcf9cb4109f2a5e9bdfa5022"
 
