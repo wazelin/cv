@@ -14,6 +14,8 @@ const gulp = require('gulp'),
     cache = require('gulp-cache'),
     realFavicon = require('gulp-real-favicon'),
     html2pdf = require('gulp-html2pdf'),
+    replace = require('gulp-replace'),
+    path = require('path'),
     fs = require('fs');
 
 const FAVICON_DATA_FILE = 'faviconData.json';
@@ -64,10 +66,34 @@ gulp.task(
 );
 
 gulp.task(
+    'pdf',
+    function (done) {
+        runSequence(
+            'prependAbsolutePath',
+            'html2pdf',
+            done
+        );
+    }
+);
+
+gulp.task(
+    'prependAbsolutePath',
+    function () {
+        const replacement = '"file:///' + path.resolve('./src') + '/$1"';
+
+        return gulp
+            .src('./src/index.html')
+            .pipe(replace(/src="([^"]+(?:\.png|\.jpg|\.gif|\.svg))"/g, 'src=' + replacement))
+            .pipe(replace(/href="([^"]+\.css)"/g, 'href=' + replacement))
+            .pipe(gulp.dest('./src/vendor'));
+    }
+);
+
+gulp.task(
     'html2pdf',
     function () {
         return gulp
-            .src('./src/index.html')
+            .src('./src/vendor/index.html')
             .pipe(plumber())
             .pipe(html2pdf())
             .pipe(gulp.dest('./src/vendor/public'));
@@ -201,7 +227,7 @@ gulp.task(
     }
 );
 
-gulp.task('build', ['vendor', 'vendor:public', 'sass', 'html2pdf']);
+gulp.task('build', ['vendor', 'vendor:public', 'sass', 'pdf']);
 
 gulp.task(
     'publish',
