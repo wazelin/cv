@@ -1,6 +1,7 @@
 @import "variables";
 
 $iconBorder: 1px solid #aaa;
+$descriptionFallbackWidth: 80%;
 $descriptionWidth: calc(100% - 55px);
 
 .contact-item {
@@ -12,6 +13,9 @@ $descriptionWidth: calc(100% - 55px);
   }
 
   .title {
+    //noinspection CssOverwrittenProperties
+    width: $descriptionFallbackWidth;
+    //noinspection CssOverwrittenProperties
     width: $descriptionWidth;
     font-size: 1.5em;
     font-weight: $bolderFontWeight;
@@ -23,6 +27,9 @@ $descriptionWidth: calc(100% - 55px);
   }
 
   .description {
+    //noinspection CssOverwrittenProperties
+    width: $descriptionFallbackWidth;
+    //noinspection CssOverwrittenProperties
     width: $descriptionWidth;
     font-size: 1.2em;
     opacity: 0.7;
