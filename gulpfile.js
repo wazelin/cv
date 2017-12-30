@@ -162,7 +162,7 @@ gulp.task(
             .pipe(sass())
             .pipe(gulp.dest('./src/css'))
             .pipe(browserSync.reload({stream: true}));
-        gulp.watch(['./src/*.html', './src/images/**/*.+(png|jpg|gif|svg)'], browserSync.reload);
+        gulp.watch(['./src/*.html', './src/js/**/*.js', './src/images/**/*.+(png|jpg|gif|svg)'], browserSync.reload);
     }
 );
 
