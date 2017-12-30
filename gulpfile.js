@@ -13,6 +13,7 @@ const gulp = require('gulp'),
     runSequence = require('run-sequence'),
     cache = require('gulp-cache'),
     realFavicon = require('gulp-real-favicon'),
+    html2pdf = require('gulp-html2pdf'),
     fs = require('fs');
 
 const FAVICON_DATA_FILE = 'faviconData.json';
@@ -58,6 +59,17 @@ gulp.task(
     'vendor:public',
     function () {
         return gulp.src('./node_modules/font-awesome/fonts/*')
+            .pipe(gulp.dest('./src/vendor/public'));
+    }
+);
+
+gulp.task(
+    'html2pdf',
+    function () {
+        return gulp
+            .src('./src/index.html')
+            .pipe(plumber())
+            .pipe(html2pdf())
             .pipe(gulp.dest('./src/vendor/public'));
     }
 );
@@ -189,7 +201,7 @@ gulp.task(
     }
 );
 
-gulp.task('build', ['vendor', 'vendor:public', 'sass']);
+gulp.task('build', ['vendor', 'vendor:public', 'sass', 'html2pdf']);
 
 gulp.task(
     'publish',

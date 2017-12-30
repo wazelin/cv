@@ -16,6 +16,10 @@ $descriptionWidth: calc(100% - 55px);
     font-size: 1.5em;
     font-weight: $bolderFontWeight;
     opacity: 0.9;
+
+    &:last-child {
+      margin-top: 10px;
+    }
   }
 
   .description {

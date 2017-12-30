@@ -7,8 +7,12 @@ cache:
     - "node_modules"
 
 install:
-  - yarn install
+  - yarn install --frozen-lockfile
   - yarn global add cloudfront-invalidate
+  - mkdir wkhtmltopdf
+  - wget https://github.com/wkhtmltopdf/wkhtmltopdf/releases/download/0.12.4/wkhtmltox-0.12.4_linux-generic-amd64.tar.xz
+  - tar xvfJ wkhtmltox-0.12.4_linux-generic-amd64.tar.xz -C wkhtmltopdf
+  - export PATH=$PATH:$PWD/wkhtmltopdf/wkhtmltox/bin
 
 script: gulp
 

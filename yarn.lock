@@ -2410,6 +2410,14 @@ gulp-fn@~0.0.0:
     gulp-util "^2.2.14"
     through2 "^0.4.2"
 
+gulp-html2pdf@^0.1.3:
+  version "0.1.3"
+  resolved "https://registry.yarnpkg.com/gulp-html2pdf/-/gulp-html2pdf-0.1.3.tgz#7c861352c977d7c1d4aee7f4a8191a534f7462cb"
+  dependencies:
+    gulp-util "^2.2.1"
+    through2 "^0.5.1"
+    wkhtmltopdf "^0.1.5"
+
 gulp-if@^2.0.0, gulp-if@^2.0.2:
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/gulp-if/-/gulp-if-2.0.2.tgz#a497b7e7573005041caa2bc8b7dda3c80444d629"
@@ -2529,7 +2537,7 @@ gulp-useref@^3.1.3:
     useref "^1.2.0"
     vinyl-fs "^2.2.1"
 
-gulp-util@^2.2.14, gulp-util@^2.2.17:
+gulp-util@^2.2.1, gulp-util@^2.2.14, gulp-util@^2.2.17:
   version "2.2.20"
   resolved "https://registry.yarnpkg.com/gulp-util/-/gulp-util-2.2.20.tgz#d7146e5728910bd8f047a6b0b1e549bc22dbd64c"
   dependencies:
@@ -5552,6 +5560,10 @@ signal-exit@^3.0.0:
   version "3.0.2"
   resolved "https://registry.yarnpkg.com/signal-exit/-/signal-exit-3.0.2.tgz#b5fdc08f1287ea1178628e415e25132b73646c6d"
 
+slang@>=0.2:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/slang/-/slang-0.3.0.tgz#13af75b4f0c018c6a8193d704f65b23be4fbabdc"
+
 slash@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/slash/-/slash-1.0.0.tgz#c41f2f6c39fc16d1cd17ad4b5d896114ae470d55"
@@ -6648,6 +6660,12 @@ window-size@^0.1.2, window-size@^0.1.4:
 window-size@^0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/window-size/-/window-size-0.2.0.tgz#b4315bb4214a3d7058ebeee892e13fa24d98b075"
+
+wkhtmltopdf@^0.1.5:
+  version "0.1.6"
+  resolved "https://registry.yarnpkg.com/wkhtmltopdf/-/wkhtmltopdf-0.1.6.tgz#e9db84eb10d4ee50a40f4c3a7f58ca3d5d365ec4"
+  dependencies:
+    slang ">=0.2"
 
 wrap-ansi@^2.0.0:
   version "2.1.0"
