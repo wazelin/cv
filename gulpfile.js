@@ -69,7 +69,7 @@ gulp.task(
     'pdf',
     function (done) {
         runSequence(
-            'prependAbsolutePath',
+            'prepareHtmlForPdfExport',
             'html2pdf',
             done
         );
@@ -77,14 +77,14 @@ gulp.task(
 );
 
 gulp.task(
-    'prependAbsolutePath',
+    'prepareHtmlForPdfExport',
     function () {
-        const replacement = '"file:///' + path.resolve('./src') + '/$1"';
-
         return gulp
             .src('./src/index.html')
-            .pipe(replace(/src="([^"]+(?:\.png|\.jpg|\.gif|\.svg))"/g, 'src=' + replacement))
-            .pipe(replace(/href="([^"]+\.css)"/g, 'href=' + replacement))
+            .pipe(
+                replace(/src="([^"]+(?:\.png|\.jpg|\.gif|\.svg))"/g, 'src="file:///' + path.resolve('./src') + '/$1"')
+            )
+            .pipe(replace(/^.*class="legend.*$|Download this CV/gm, ''))
             .pipe(gulp.dest('./src/vendor'));
     }
 );
