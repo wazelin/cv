@@ -88,7 +88,7 @@ gulp.task(
 	}
 );
 
-gulp.task('pdf', gulp.series('prepareHtmlForPdfExport', /*'html2pdf'*/));
+gulp.task('pdf', gulp.series('prepareHtmlForPdfExport', 'html2pdf'));
 
 gulp.task(
 	'images',
