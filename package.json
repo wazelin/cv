@@ -9,7 +9,6 @@
     "gulp-cache": "^1.0.1",
     "gulp-cssnano": "^2.1.2",
     "gulp-favicons": "^2.2.7",
-    "gulp-html2pdf": "^0.1.3",
     "gulp-if": "^3.0.0",
     "gulp-imagemin": "^6.1.0",
     "gulp-plumber": "^1.1.0",
@@ -23,7 +22,8 @@
     "gulp-watch-sass": "^1.3.2",
     "jquery": "^3.2.1",
     "path": "^0.12.7",
-    "tether": "^1.4.3"
+    "tether": "^1.4.3",
+    "wkhtmltopdf": "^0.3.4"
   },
   "browserslist": [
     "last 2 versions"

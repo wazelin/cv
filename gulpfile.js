@@ -1,21 +1,21 @@
-const gulp = require('gulp'),
-	sass = require('gulp-sass'),
-	watchSass = require('gulp-watch-sass'),
-	autoprefixer = require('gulp-autoprefixer'),
-	plumber = require('gulp-plumber'),
+const autoprefixer = require('gulp-autoprefixer'),
 	browserSync = require('browser-sync'),
-	useref = require('gulp-useref'),
-	refHash = require('gulp-ref-hash'),
-	uglify = require('gulp-uglify'),
-	gulpIf = require('gulp-if'),
-	cssnano = require('gulp-cssnano'),
-	imagemin = require('gulp-imagemin'),
 	cache = require('gulp-cache'),
-	realFavicon = require('gulp-real-favicon'),
-	html2pdf = require('gulp-html2pdf'),
-	replace = require('gulp-replace'),
+	cssnano = require('gulp-cssnano'),
+	fs = require('fs'),
+	gulp = require('gulp'),
+	gulpIf = require('gulp-if'),
+	imagemin = require('gulp-imagemin'),
 	path = require('path'),
-	fs = require('fs');
+	plumber = require('gulp-plumber'),
+	realFavicon = require('gulp-real-favicon'),
+	refHash = require('gulp-ref-hash'),
+	replace = require('gulp-replace'),
+	sass = require('gulp-sass'),
+	uglify = require('gulp-uglify'),
+	useref = require('gulp-useref'),
+	watchSass = require('gulp-watch-sass'),
+	wkhtmltopdf = require('wkhtmltopdf');
 
 const FAVICON_DATA_FILE = 'faviconData.json';
 
@@ -72,23 +72,22 @@ gulp.task(
 			.pipe(
 				replace(/src="([^"]+(?:\.png|\.jpg|\.gif|\.svg))"/g, 'src="file:///' + path.resolve('./src') + '/$1"')
 			)
-			.pipe(replace(/^.*class="legend.*$|Download this CV/gm, ''))
+			.pipe(replace(/^.*class="legend.*$|^.*rel="stylesheet".*$|^.*<script\s.*$|Download this CV/gm, ''))
 			.pipe(gulp.dest('./src/vendor'));
 	}
 );
 
 gulp.task(
-	'html2pdf',
+	'wkhtmltopdf',
 	function () {
-		return gulp
-			.src('./src/vendor/index.html')
-			.pipe(plumber())
-			.pipe(html2pdf())
-			.pipe(gulp.dest('./src/vendor/public'));
+		return wkhtmltopdf(
+			'file://' + path.resolve('./src/vendor/index.html'),
+			{output : path.resolve('./src/vendor/public/cv.pdf')}
+		);
 	}
 );
 
-gulp.task('pdf', gulp.series('prepareHtmlForPdfExport', 'html2pdf'));
+gulp.task('pdf', gulp.series('prepareHtmlForPdfExport', 'wkhtmltopdf'));
 
 gulp.task(
 	'images',
@@ -205,7 +204,7 @@ gulp.task(
 	}
 );
 
-gulp.task('build', gulp.parallel('vendor', 'vendor:public', 'sass', 'pdf'));
+gulp.task('build', gulp.series(gulp.parallel('vendor', 'vendor:public'), gulp.parallel('sass', 'pdf')));
 
 gulp.task('serve', gulp.series('build', 'browser-sync', 'watch'));
 
