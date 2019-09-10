@@ -2,6 +2,7 @@ const autoprefixer = require('gulp-autoprefixer'),
 	browserSync = require('browser-sync'),
 	cache = require('gulp-cache'),
 	cssnano = require('gulp-cssnano'),
+	del = require('del'),
 	fs = require('fs'),
 	gulp = require('gulp'),
 	gulpIf = require('gulp-if'),
@@ -204,7 +205,14 @@ gulp.task(
 	}
 );
 
-gulp.task('build', gulp.series(gulp.parallel('vendor', 'vendor:public'), gulp.parallel('sass', 'pdf')));
+gulp.task(
+	'clean',
+	function () {
+		return del([FAVICON_DATA_FILE]);
+	}
+);
+
+gulp.task('build', gulp.series(gulp.parallel('vendor', 'vendor:public'), gulp.parallel('sass', 'pdf'), 'clean'));
 
 gulp.task('serve', gulp.series('build', 'browser-sync', 'watch'));
 

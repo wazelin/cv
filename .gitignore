@@ -2,5 +2,6 @@
 dist
 faviconData.json
 node_modules
+src/built.html
 src/css
 src/vendor
