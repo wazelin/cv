@@ -71,9 +71,9 @@ gulp.task(
 		return gulp
 			.src('./src/index.html')
 			.pipe(
-				replace(/src="([^"]+(?:\.png|\.jpg|\.gif|\.svg))"/g, 'src="file:///' + path.resolve('./src') + '/$1"')
+				replace(/src="([^"]+(?:\.png|\.jpg|\.gif|\.svg))"/g, 'src="file://' + path.resolve('./src') + '/$1"')
 			)
-			.pipe(replace(/^.*class="legend.*$|^.*rel="stylesheet".*$|^.*<script\s.*$|Download this CV/gm, ''))
+			.pipe(replace(/^.*class="legend.*$|^.*rel="stylesheet".*$|^.*<script\s.*$|^.*Download this CV.*/gm, ''))
 			.pipe(gulp.dest('./src/vendor'));
 	}
 );
