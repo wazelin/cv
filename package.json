@@ -35,5 +35,6 @@
   "repository": "git@github.com:wazelin/cv.git",
   "author": "Sergei Mikhailov",
   "license": "MIT",
-  "private": true
+  "private": true,
+  "dependencies": {}
 }
