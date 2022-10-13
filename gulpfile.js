@@ -83,7 +83,7 @@ gulp.task(
 	function () {
 		return wkhtmltopdf(
 			'file://' + path.resolve('./src/vendor/index.html'),
-			{'--enable-local-file-access': true, output : path.resolve('./src/vendor/public/cv.pdf')}
+			{'-enable-local-file-access': true, output : path.resolve('./src/vendor/public/cv.pdf')}
 		);
 	}
 );
